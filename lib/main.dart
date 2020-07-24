@@ -10,6 +10,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _people = 0;
+
+  void _changePeople(int delta) {
+    setState(() {
+      _people += delta;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -20,7 +28,7 @@ class _HomeState extends State<Home> {
           height: 1000.0,
         ),
         Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-          Text("Pessoas",
+          Text("Pessoas: $_people",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w100,
@@ -35,7 +43,9 @@ class _HomeState extends State<Home> {
                     "+1",
                     style: TextStyle(fontSize: 40.0, color: Colors.white),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _changePeople(1);
+                  },
                 ),
               ),
               Padding(
@@ -45,12 +55,14 @@ class _HomeState extends State<Home> {
                     "-1",
                     style: TextStyle(fontSize: 40.0, color: Colors.white),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _changePeople(-1);
+                  },
                 ),
               ),
             ],
           ),
-          Text("Pessoas",
+          Text("contador",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w100,
