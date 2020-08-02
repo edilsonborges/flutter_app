@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
             IconButton(icon: Icon(Icons.refresh), onPressed: () {})
           ],
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.red,
         body: SingleChildScrollView(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
