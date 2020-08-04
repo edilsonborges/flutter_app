@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: Text('Calculadora de IMC'),
           centerTitle: true,
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.green,
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.refresh),
@@ -76,40 +76,46 @@ class _HomeState extends State<Home> {
                     color: Colors.green,
                   ),
                   TextFormField(
-                      inputFormatters: <TextInputFormatter>[
-                        WhitelistingTextInputFormatter.digitsOnly
-                      ],
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          labelText: "Peso (kg)",
-                          labelStyle: TextStyle(color: Colors.green)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.green, fontSize: 25),
-                      controller: weightController,
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return "Insira seu Peso";
-                        }
-                      }),
+                    inputFormatters: <TextInputFormatter>[
+                      WhitelistingTextInputFormatter.digitsOnly
+                    ],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                        labelText: "Peso (kg)",
+                        labelStyle: TextStyle(color: Colors.green)),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.green, fontSize: 25),
+                    controller: weightController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Insira seu Peso";
+                      }
+                    },
+                  ),
                   TextFormField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          labelText: "Altura (cm)",
-                          labelStyle: TextStyle(color: Colors.green)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.green, fontSize: 25),
-                      controller: heightController,
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return "Insira sua Altura";
-                        }
-                      }),
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                        labelText: "Altura (cm)",
+                        labelStyle: TextStyle(color: Colors.green)),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.green, fontSize: 25),
+                    controller: heightController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Insira sua Altura";
+                      }
+                    },
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       height: 50,
                       child: RaisedButton(
-                        onPressed: _calculate,
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            _calculate();
+                          }
+                        },
                         child: Text(
                           "Calcular",
                           style: TextStyle(color: Colors.white, fontSize: 25),
