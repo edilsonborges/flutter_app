@@ -15,6 +15,8 @@ class _HomeState extends State<Home> {
   TextEditingController heightController = TextEditingController();
   String _infoText = "Informe seus dados!";
 
+  GlobalKey<FormState> _formKey = GlobalKey < FormState();
+
   void _resetFields() {
     weightController.text = "";
     heightController.text = "";
@@ -63,6 +65,7 @@ class _HomeState extends State<Home> {
         body: SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Form(
+              key: _formKey;
               child: SingleChildScrollView(
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -72,7 +75,7 @@ class _HomeState extends State<Home> {
                     size: 120,
                     color: Colors.green,
                   ),
-                  TextField(
+                  TextFormField(
                     inputFormatters: <TextInputFormatter>[
                       WhitelistingTextInputFormatter.digitsOnly
                     ],
@@ -84,7 +87,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(color: Colors.green, fontSize: 25),
                     controller: weightController,
                   ),
-                  TextField(
+                  TextFormField(
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                         labelText: "Altura (cm)",
