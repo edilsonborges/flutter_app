@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
   TextEditingController heightController = TextEditingController();
   String _infoText = "Informe seus dados!";
 
-  GlobalKey<FormState> _formKey = GlobalKey < FormState();
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void _resetFields() {
     weightController.text = "";
@@ -86,6 +86,11 @@ class _HomeState extends State<Home> {
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.green, fontSize: 25),
                     controller: weightController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Insira seu Peso"
+                      }
+                    }
                   ),
                   TextFormField(
                     keyboardType: TextInputType.number,
