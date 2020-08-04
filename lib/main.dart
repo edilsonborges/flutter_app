@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
         body: SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Form(
-              key: _formKey;
+              key: _formKey,
               child: SingleChildScrollView(
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -76,31 +76,34 @@ class _HomeState extends State<Home> {
                     color: Colors.green,
                   ),
                   TextFormField(
-                    inputFormatters: <TextInputFormatter>[
-                      WhitelistingTextInputFormatter.digitsOnly
-                    ],
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        labelText: "Peso (kg)",
-                        labelStyle: TextStyle(color: Colors.green)),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.green, fontSize: 25),
-                    controller: weightController,
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "Insira seu Peso"
-                      }
-                    }
-                  ),
+                      inputFormatters: <TextInputFormatter>[
+                        WhitelistingTextInputFormatter.digitsOnly
+                      ],
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          labelText: "Peso (kg)",
+                          labelStyle: TextStyle(color: Colors.green)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.green, fontSize: 25),
+                      controller: weightController,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return "Insira seu Peso";
+                        }
+                      }),
                   TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        labelText: "Altura (cm)",
-                        labelStyle: TextStyle(color: Colors.green)),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.green, fontSize: 25),
-                    controller: heightController,
-                  ),
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          labelText: "Altura (cm)",
+                          labelStyle: TextStyle(color: Colors.green)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.green, fontSize: 25),
+                      controller: heightController,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return "Insira sua Altura";
+                        }
+                      }),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
